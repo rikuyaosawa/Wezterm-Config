@@ -2,8 +2,7 @@
 local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
-
-# maximize the initial window
+-- maximize the initial window
 local mux = wezterm.mux
 wezterm.on("gui-startup", function()
 	local tab, pane, window = mux.spawn_window({})
