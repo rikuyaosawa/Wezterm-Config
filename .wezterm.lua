@@ -5,14 +5,9 @@ local config = wezterm.config_builder()
 
 -- maximize the initial window
 local mux = wezterm.mux
-
--- wezterm.on("gui-startup", function()
--- 	local tab, pane, window = mux.spawn_window({})
--- 	window:gui_window():maximize()
--- end)
-
 wezterm.on("gui-startup", function()
-	window:set_position(0, 0)
+	local tab, pane, window = mux.spawn_window({})
+	window:gui_window():maximize()
 end)
 
 config.initial_cols = 130
