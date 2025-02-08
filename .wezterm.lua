@@ -2,12 +2,21 @@
 local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
+
 -- maximize the initial window
 local mux = wezterm.mux
+
+-- wezterm.on("gui-startup", function()
+-- 	local tab, pane, window = mux.spawn_window({})
+-- 	window:gui_window():maximize()
+-- end)
+
 wezterm.on("gui-startup", function()
-	local tab, pane, window = mux.spawn_window({})
-	window:gui_window():maximize()
+	window:set_position(0, 0)
 end)
+
+config.initial_cols = 130
+config.initial_rows = 32
 
 config.default_domain = "WSL:Ubuntu"
 
@@ -15,16 +24,22 @@ config.font = wezterm.font("MesloLGS Nerd Font Mono")
 config.font_size = 16
 
 config.enable_tab_bar = true
+config.hide_tab_bar_if_only_one_tab = true
 
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 1
 
-config.macos_window_background_blur = 10
+config.window_background_opacity = 0.5
+config.win32_system_backdrop = "Acrylic"
 
-config.color_scheme = "Batman"
+config.window_padding = {
+	left = "2cell",
+	right = "2cell",
+	top = "1cell",
+	bottom = "1cell",
+}
+
 config.colors = {
 	foreground = "#CBE0F0",
-	background = "#011423",
 	cursor_bg = "#47FF9C",
 	cursor_border = "#47FF9C",
 	cursor_fg = "#011423",
